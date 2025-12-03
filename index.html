@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NS SmartFlow Prototype</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://unpkg.com/feather-icons/dist/feather.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="phone-frame">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <i data-feather="train"></i>
+            <span class="logo-text">SmartFlow</span>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-btn">
+              <i data-feather="bell"></i>
+            </button>
+            <button class="icon-btn">
+              <i data-feather="user"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+
+          <!-- HOME SCREEN -->
+          <section class="screen screen-active" id="screen-home">
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">SmartFlow Assist</h2>
+                <button class="icon-btn small">
+                  <i data-feather="refresh-ccw"></i>
+                </button>
+              </div>
+              <div class="station-row">
+                <span>Amsterdam Central</span>
+                <span class="time-blue">2 min</span>
+              </div>
+              <div class="station-row">
+                <span>Utrecht Central</span>
+                <span class="time-blue">5 min</span>
+              </div>
+              <div class="station-row">
+                <span>Rotterdam Central</span>
+                <span class="time-blue">8 min</span>
+              </div>
+            </div>
+
+            <div class="tile-grid">
+              <div class="tile">
+                <div class="tile-icon">
+                  <i data-feather="map"></i>
+                </div>
+                <div class="tile-text">
+                  <span class="tile-title">My Trip</span>
+                  <span class="tile-sub">Current journey</span>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-icon">
+                  <i data-feather="navigation-2"></i>
+                </div>
+                <div class="tile-text">
+                  <span class="tile-title">Start AR</span>
+                  <span class="tile-sub">Navigation</span>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-icon">
+                  <i data-feather="map-pin"></i>
+                </div>
+                <div class="tile-text">
+                  <span class="tile-title">Nearby</span>
+                  <span class="tile-sub">Deals</span>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-icon">
+                  <i data-feather="clock"></i>
+                </div>
+                <div class="tile-text">
+                  <span class="tile-title">Delay</span>
+                  <span class="tile-sub">Compensation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-banner">
+              <div class="ai-text">
+                <span class="ai-label">AI suggestion</span>
+                <p>You’re 8 minutes early — coffee deal available on your route.</p>
+              </div>
+              <button class="ai-btn">View deal</button>
+            </div>
+
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">Delay Compensation</h2>
+                <span class="badge badge-available">Available</span>
+              </div>
+              <p class="muted">
+                You are entitled to compensation for your last journey.
+              </p>
+            </div>
+          </section>
+
+          <!-- PLANNER SCREEN -->
+          <section class="screen" id="screen-planner">
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">Trip Planner</h2>
+                <button class="link-btn">Hide</button>
+              </div>
+
+              <div class="input-row">
+                <i data-feather="search"></i>
+                <input
+                  type="text"
+                  placeholder="Where do you want to go?"
+                />
+              </div>
+
+              <div class="map-box">
+                <div class="map-tag">
+                  <span class="dot"></span>
+                  <span>Current location</span>
+                </div>
+                <button class="map-cta">Select destination</button>
+              </div>
+
+              <div class="quick-row">
+                <button class="quick-city">
+                  <i data-feather="home"></i>
+                  <span>Amsterdam C</span>
+                </button>
+                <button class="quick-city">
+                  <i data-feather="home"></i>
+                  <span>Utrecht C</span>
+                </button>
+                <button class="quick-city">
+                  <i data-feather="home"></i>
+                  <span>Rotterdam C</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Kilometer Card + Rewards -->
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">Kilometer Card</h2>
+                <button class="icon-btn small" id="flip-km-card">
+                  <i data-feather="rotate-ccw"></i>
+                </button>
+              </div>
+              <div class="km-card-wrapper">
+                <div class="km-card km-front km-active">
+                  <div class="km-circle">
+                    <span class="km-points">880</span>
+                    <span class="km-label">points</span>
+                  </div>
+                  <p class="muted center">
+                    120 points until your next reward
+                  </p>
+                </div>
+                <div class="km-card km-back">
+                  <p class="km-tier">Tier: Silver</p>
+                  <p class="muted small">Points earned this month: 245 km</p>
+                  <ul class="km-trips">
+                    <li>Amsterdam → Utrecht · +2 km</li>
+                    <li>Utrecht → Rotterdam · +5 km</li>
+                    <li>Rotterdam → Den Haag · +3 km</li>
+                  </ul>
+                  <div class="qr-row">
+                    <div class="qr-placeholder"></div>
+                    <p class="muted small">
+                      Scan this QR in-store to redeem rewards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wallet-stack">
+              <div class="wallet-card">
+                <div class="wallet-header">
+                  <div class="wallet-icon">
+                    <i data-feather="coffee"></i>
+                  </div>
+                  <div>
+                    <h3>Free Coffee</h3>
+                    <p class="muted small">Starbucks or Kiosk</p>
+                  </div>
+                </div>
+                <div class="wallet-body">
+                  <p class="muted small">Valid today · All NS Stations</p>
+                  <div class="barcode"></div>
+                  <button class="primary-btn full">Redeem now</button>
+                </div>
+                <button class="view-deals">View all deals ▾</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- AR SCREEN -->
+          <section class="screen" id="screen-ar">
+            <div class="ar-hero">
+              <div class="ar-overlay-top">
+                <div class="dest-bar">
+                  <i data-feather="search"></i>
+                  <input
+                    type="text"
+                    placeholder="Where do you want to go?"
+                  />
+                </div>
+                <span class="ar-label">AR Wayfinding</span>
+              </div>
+
+              <div class="ar-overlay-middle">
+                <div class="ar-tag">
+                  <span class="tag-title">Platform 8</span>
+                  <span class="tag-sub">120 m · 2 min</span>
+                </div>
+                <div class="ar-tag">
+                  <span class="tag-title">Coffee Deal</span>
+                  <span class="tag-sub">30 m to your right</span>
+                </div>
+              </div>
+
+              <div class="ar-arrows-row">
+                <div class="ar-arrow big"></div>
+                <div class="ar-arrow med"></div>
+                <div class="ar-arrow small"></div>
+              </div>
+
+              <div class="ar-overlay-bottom">
+                <div class="ai-bubble">
+                  <div>
+                    <span class="ai-label">AI route suggestion</span>
+                    <p class="ai-bubble-text">
+                      You have 4 minutes spare — add a quick stop?
+                    </p>
+                  </div>
+                  <div class="ai-actions">
+                    <button class="ghost-btn small">Skip</button>
+                    <button class="primary-btn small">Add stop</button>
+                  </div>
+                </div>
+                <button class="primary-btn ar-btn">
+                  <i data-feather="navigation-2"></i>
+                  <span>Start AR Route</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- REWARDS SCREEN -->
+          <section class="screen" id="screen-rewards">
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">Rewards</h2>
+              </div>
+              <p class="muted">
+                Collect kilometers and unlock personalized station deals.
+              </p>
+            </div>
+            <div class="wallet-stack">
+              <div class="wallet-card">
+                <div class="wallet-header">
+                  <div class="wallet-icon">
+                    <i data-feather="coffee"></i>
+                  </div>
+                  <div>
+                    <h3>Free Coffee</h3>
+                    <p class="muted small">Starbucks or Kiosk</p>
+                  </div>
+                </div>
+                <div class="wallet-body">
+                  <p class="muted small">Valid until 31 Dec 2024</p>
+                  <div class="barcode"></div>
+                  <button class="primary-btn full">Redeem now</button>
+                </div>
+              </div>
+
+              <div class="wallet-card secondary">
+                <div class="wallet-header">
+                  <div class="wallet-icon">
+                    <i data-feather="shopping-bag"></i>
+                  </div>
+                  <div>
+                    <h3>20% off AH to go</h3>
+                    <p class="muted small">On selected items</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wallet-card secondary">
+                <div class="wallet-header">
+                  <div class="wallet-icon">
+                    <i data-feather="lock"></i>
+                  </div>
+                  <div>
+                    <h3>Free Locker Day Pass</h3>
+                    <p class="muted small">Any NS station locker</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROFILE SCREEN -->
+          <section class="screen" id="screen-profile">
+            <div class="card">
+              <div class="card-header-row">
+                <h2 class="card-title">Profile</h2>
+              </div>
+              <div class="profile-row">
+                <div class="profile-avatar">
+                  <i data-feather="user"></i>
+                </div>
+                <div>
+                  <h3>SmartFlow Traveler</h3>
+                  <p class="muted small">Business & daily commuter</p>
+                </div>
+              </div>
+              <ul class="profile-list">
+                <li>Preferred station: Amsterdam Central</li>
+                <li>Notification level: Smart suggestions</li>
+                <li>Rewards focus: Coffee & workspace</li>
+              </ul>
+            </div>
+          </section>
+        </main>
+
+        <!-- BOTTOM NAV -->
+        <nav class="tabbar">
+          <button class="tab tab-active" data-target="screen-home">
+            <span class="tab-icon"><i data-feather="home"></i></span>
+            <span class="tab-label">Home</span>
+          </button>
+          <button class="tab" data-target="screen-planner">
+            <span class="tab-icon"><i data-feather="shuffle"></i></span>
+            <span class="tab-label">Planner</span>
+          </button>
+          <button class="tab" data-target="screen-ar">
+            <span class="tab-icon"><i data-feather="navigation"></i></span>
+            <span class="tab-label">AR</span>
+          </button>
+          <button class="tab" data-target="screen-rewards">
+            <span class="tab-icon"><i data-feather="gift"></i></span>
+            <span class="tab-label">Rewards</span>
+          </button>
+          <button class="tab" data-target="screen-profile">
+            <span class="tab-icon"><i data-feather="user"></i></span>
+            <span class="tab-label">Profile</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>
